@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var switchBarcodeType: UIView!
     @IBOutlet weak var scanView: UIView!
     
-    var barcodeScanView: BarcodeScanView!
+    @IBOutlet weak var barcodeScanView: BarcodeScanView!
+//    var barcodeScanView: BarcodeScanView!
     var focusView: FocusView!
 
     @IBAction func turnFlashOnOrOff(_ sender: Any) {
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
         scanButton.image = barcodeScanView.torchMode.image
     }
     
+    /*
     func setUpScan() {
         barcodeScanView = BarcodeScanView.init(frame: CGRect.zero)
         barcodeScanView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,28 +49,17 @@ class ViewController: UIViewController {
         
         barcodeScanView.setUpCamera()
         barcodeScanView.startCapturing()
-    }
-    
-    func addFocusView() {
-        focusView = FocusView.init(frame: CGRect.zero, focusText: "UPC bar code")
-        focusView.translatesAutoresizingMaskIntoConstraints = false
-        focusView.backgroundColor = UIColor.clear
-        scanView.addSubview(focusView)
-        
-        let viewsDict: [String: Any] = ["FocusView": focusView]
-        
-        scanView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[FocusView]|", options: .init(rawValue: 0), metrics: nil, views: viewsDict))
-        scanView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[FocusView]|", options: .init(rawValue: 0), metrics: nil, views: viewsDict))
-        
-        scanView.bringSubviewToFront(focusView)
-    }
+    } */
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        setUpScan()
-//        addFocusView()
+//        setUpScan()
+        barcodeScanView.delegate = self
+        
+        barcodeScanView.setUpCamera()
+        barcodeScanView.startCapturing()
     }
 }
 
